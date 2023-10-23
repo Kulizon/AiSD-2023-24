@@ -19,7 +19,9 @@ public:
 
     ArrayList(const ArrayList& other) {
         tab = new T[max_size()];
-        for (int i = 0; i < last; i++) {
+        last = other.last;
+        msize = other.max_size();
+        for (int i = 0; i < other.last; i++) {
             tab[i] = other.tab[i];
         }
     }; // copy constructor

@@ -56,5 +56,7 @@ int main() {
     list.display();
     std::cout << std::endl;
 
+    ArrayList<int> listCopy(list);
+
     std::cout << "Testy zakonczone sukcesem!" << std::endl;
 }
