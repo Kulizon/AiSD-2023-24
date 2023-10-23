@@ -96,7 +96,7 @@ public:
     void pop_front() {
         assert(!this->empty());
 
-        this->tab[0] = 0;
+        this->tab[0] = T();
         for (int i = 0; i < this->last; i++)
         {
             this->tab[i] = this->tab[i+1];
@@ -107,14 +107,14 @@ public:
     void pop_back() {
         assert(!this->empty());
 
-        this->tab[last-1] = 0;
+        this->tab[last-1] = T();
         this->last--;
     }; // usuwa koniec, error dla pustej listy
     
     void clear() {
         for (int i = 0; i < last; i++)
         {
-            this->tab[i] = 0;
+            this->tab[i] = T();
         }
 
         this->last = 0;
