@@ -67,6 +67,7 @@ public:
             node = node->next;
             delete prev;
         }
+        head = nullptr;
     }; // czyszczenie listy z elementow O(n)
 
     void display(); // O(n)
