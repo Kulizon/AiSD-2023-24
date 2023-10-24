@@ -28,7 +28,16 @@ public:
     SingleList(const SingleList& other); // copy constructor
     // usage:   SingleList<int> list2(list1);
 
-    SingleList& operator=(const SingleList& other); // copy assignment operator, return *this
+    SingleList& operator=(const SingleList& other) {
+        this->head = other.head;
+        SingleList<T> myNode = head;
+        SingleList<T> otherNode = other.head;
+        while (otherNode != nullptr) {
+            myNode->next = otherNode.next;
+            otherNode = otherNode->next;
+        }
+        
+    }; // copy assignment operator, return *this
     // usage:   list2 = list1;
 
     bool empty() const { 

@@ -14,6 +14,10 @@ int main() {
 
     myList->display();
 
+    SingleList<int> *myCopiedList = myList;
+
+    myCopiedList->display();
+
     myList->clear();
     myList->display();
 }
