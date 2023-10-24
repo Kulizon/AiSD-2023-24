@@ -12,4 +12,7 @@ int main() {
     myList->reverse();
 
     myList->display();
+
+    myList->clear();
+    myList->display();
 }
