@@ -48,6 +48,7 @@ public:
             otherNode = otherNode->next;
         }
         
+        return *this;
     }; // copy assignment operator, return *this
     // usage:   list2 = list1;
 
@@ -88,6 +89,7 @@ public:
             delete prev;
         }
         head = nullptr;
+        tail = nullptr;
     }; // czyszczenie listy z elementow O(n)
 
     void display(); // O(n)
