@@ -58,10 +58,10 @@ public:
 
     int size() const {
         int size = 0;
-        SingleNode node = this->head;
-        while (node.next != nullptr) {
+        SingleNode<T> *node = head;
+        while (node != nullptr) {
             size++;
-            node = node.next;
+            node = node->next;
         } 
         return size;
     }; // O(n) bo trzeba policzyc

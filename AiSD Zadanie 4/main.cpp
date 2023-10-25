@@ -21,7 +21,17 @@ int main() {
     myCopiedList->display();
 
     SingleList<int> *myThirdList(myList);
+
+    std::cout << std::endl;
     myThirdList->display();
+    std::cout << "Size: " << myThirdList->size() << std::endl;
+    
+    myThirdList->pop_back();
+    myThirdList->pop_back();
+
+    std::cout << std::endl;
+    myThirdList->display();
+    std::cout << "Size: " << myThirdList->size() << std::endl;
 
     myList->clear();
     myList->display();
