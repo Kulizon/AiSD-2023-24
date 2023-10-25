@@ -14,9 +14,14 @@ int main() {
 
     myList->display();
 
-    SingleList<int> *myCopiedList = myList;
+    SingleList<int> *myCopiedList = new SingleList<int>();
+    myCopiedList->push_back(1);
+    myCopiedList = myList;
 
     myCopiedList->display();
+
+    SingleList<int> *myThirdList(myList);
+    myThirdList->display();
 
     myList->clear();
     myList->display();

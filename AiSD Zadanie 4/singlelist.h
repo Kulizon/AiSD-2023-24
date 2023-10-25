@@ -25,10 +25,21 @@ public:
     }
     ~SingleList(); // tu trzeba wyczyscic wezly
 
-    SingleList(const SingleList& other); // copy constructor
+    SingleList(const SingleList& other) {
+        this->head = other.head;
+        SingleList<T> myNode = head;
+        SingleList<T> otherNode = other.head;
+        while (otherNode != nullptr) {
+            myNode->next = otherNode.next;
+            otherNode = otherNode->next;
+        }
+    }; // copy constructor
     // usage:   SingleList<int> list2(list1);
 
     SingleList& operator=(const SingleList& other) {
+
+        this.clear();
+
         this->head = other.head;
         SingleList<T> myNode = head;
         SingleList<T> otherNode = other.head;
