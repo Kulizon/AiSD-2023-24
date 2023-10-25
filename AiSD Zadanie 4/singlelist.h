@@ -98,6 +98,7 @@ public:
         SingleNode<T> *current = head;
         SingleNode<T> *prev = nullptr;
         SingleNode<T> *next = current->next;
+        tail = head;
  
         while (next != nullptr) {
             next = current->next;
@@ -146,6 +147,8 @@ void SingleList<T>::push_back(const T& item) {
 template <typename T>
 void SingleList<T>::display() {
     SingleNode<T> *node = head;
+    if (head != nullptr && tail != nullptr) std::cout << "Head: " << head->value << " Tail: " << tail->value << std::endl;
+    
     while (node != nullptr){
         std::cout << node->value << " ";
         node = node->next;
