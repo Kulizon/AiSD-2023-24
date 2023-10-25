@@ -27,6 +27,7 @@ public:
 
     SingleList(const SingleList& other) {
         this->head = other.head;
+        this->tail = other.tail;
         SingleList<T> myNode = head;
         SingleList<T> otherNode = other.head;
         while (otherNode != nullptr) {
@@ -38,9 +39,14 @@ public:
 
     SingleList& operator=(const SingleList& other) {
 
+        if (this == &other) {
+            return *this;
+        }
+
         this.clear();
 
         this->head = other.head;
+        this->tail = other.tail;
         SingleList<T> myNode = head;
         SingleList<T> otherNode = other.head;
         while (otherNode != nullptr) {
