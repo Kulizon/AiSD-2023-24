@@ -1,8 +1,18 @@
-# Instalacja
+# Uruchomienie
 Przed uruchomieniem programu należy użyć poniższej komendy, aby zainstalować bibliotekę SDL2.
-```
+```console
 sudo apt-get install libsdl2-dev
 ```
+Aby skompilować i uruchomić program należy użyc komendy:
+```console
+make
+```
+
+Aby uruchomić skompilowany program należy użyc komendy:
+```console
+make run
+```
+
 
 # Labirynt
 
