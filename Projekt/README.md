@@ -26,9 +26,8 @@ Zastosowany algorytm to algorytm DFS ("recursive backtracking"). Jego przebieg d
 3. Rekurencyjnie eksplorujemy sąsiednie komórki bieżącej komórki. Podczas tej eksploracji tworzone są przejścia (usuwane są ściany), łącząc bieżącą komórkę z jej sąsiadami. Kolejność, w jakiej sąsiedzi są eksplorowani, jest losowa.
 4. Jeśli bieżąca komórka nie ma sąsiadów do odwiedzenia, algorytm wraca do poprzednich komórek na stosie, aż znajdzie komórkę z nieodwiedzonymi sąsiadami ("backtracking").
 5. Powtarzamy kroki 3-4, aż wszystkie komórki zostaną odwiedzone, a cały labirynt zostanie wygenerowany.
-6. Zamieniamy macierz z informacjami o połączeniach między komórkami na macierz z informacją o położeniu tych komórek.
-7. Ustawiamy losowe punkty startowy i końcowy na przeciwnych ścianach (góra i dół lub lewo i prawo), tworząc wejście i wyjście z labiryntu.
-8. Tworzymy okienko i pokazujemy wygenerowany labirynt.
+6. W każdym kroku rysujemy przebieg algorytmu i aktualny labirytn, zamieniamy przy tym macierz z informacjami o połączeniach między komórkami na macierz z informacją o położeniu tych komórek na siatcę.
+7. Ustawiamy losowe punkty startowy i końcowy, tworząc wejście i wyjście z labiryntu.
 
 ## Struktury danych
 
