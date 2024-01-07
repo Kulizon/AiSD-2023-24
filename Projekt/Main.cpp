@@ -12,7 +12,7 @@ int main() {
     int width = 15;
     int height = 15;
 
-    createMaze(width, height);
+    createMaze(width, height, 10);
 
     return 0;
 }

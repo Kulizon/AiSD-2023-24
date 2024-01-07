@@ -40,15 +40,16 @@ Zawiera informacje o współrzędnych komórki, informację o odwiedzeniu oraz f
 
 | Nazwa  | Parametry |  Typ zwrotny |  Opis |
 | ------- |------|------ |------|
-| initMaze      |int w, int h |std::vector<std::vector<Cell>>| zwraca labirynt (macierz komórek), w którym nie ma żadnych połączeń między komórkami o podanej długości i szerokości    |
-| generateMaze      | std::vector<std::vector<Cell>>& maze|void| generuje labirynt z losowo wybranym startowym punktem generacji     |
-| visitCell      |Cell& cell, std::vector<std::vector<Cell>>& maze |void| odwiedza komórkę i (jeżeli to możliwe) tworzy połączenia między nią a jej sąsiadami    |
+| initMaze      |int w, int h, SDL_Renderer* renderer|std::vector<std::vector<Cell>>| zwraca labirynt (macierz komórek), w którym nie ma żadnych połączeń między komórkami o podanej długości i szerokości    |
+| generateMaze      | std::vector<std::vector<Cell>>& maze, SDL_Renderer* renderer, int sleepMs|void| generuje labirynt z losowo wybranym startowym punktem generacji     |
+| visitCell      |Cell& cell, std::vector<std::vector<Cell>>& maze, SDL_Renderer* renderer, int sleepMs|void| odwiedza komórkę i (jeżeli to możliwe) tworzy połączenia między nią a jej sąsiadami    |
 | isCellValid | int x, int y, std::vector<std::vector<Cell>>& maze |bool| zwraca informację, czy komórka jest poprawna, tj. czy nie wykracza poza labirynt i nie była jeszcze odwiedzona|
 | hasNeighbours |Cell& cell, std::vector<std::vector<Cell>>& maze  |Cell*|zwraca losowego sąsiada spośród poprawnych (nieodwiedzonych) sąsiadów danej komórki|
 | mazeToMatrix | std::vector<std::vector<Cell>>& maze, std::vector<std::vector<int>>& mat  |void| zamienia macierz komórek (połączeń między nimi) na macierz z informacją o tym, co znajduje się na danym polu|
-| setStartAndEndPoint | std::vector<std::vector<int>>& maze| void| losowo ustawia punkt, z którego startujemy i punkt, do którego mamy dotrzeć|
-| drawMaze |std::vector<std::vector<int>>& maze| void |wizualizuje labirynt przy użyciu biblioteki SDL2. Jest on rysowany jako siatka komórek, gdzie białe komórki reprezentują ścieżki, czarne to ściany, czerwone to punkt startowy, a zielone to punkt docelowy|
-| createMaze |int w, int h| void |wszystkie funkcje (generateMaze, mazeToMatrix, drawMaze) spakowane w jedną|
+| setStartAndEndPoint | std::vector<std::vector<Cell>>& maze, SDL_Renderer* renderer| void| losowo ustawia punkt, z którego startujemy i punkt, do którego mamy dotrzeć|
+| drawMaze |std::vector<std::vector<int>>& matrixMaze, SDL_Renderer* renderer| void |wizualizuje labirynt przy użyciu biblioteki SDL2. Jest on rysowany jako siatka komórek, gdzie białe komórki reprezentują ścieżki, czarne to ściany, czerwone to punkt startowy, a zielone to punkt docelowy|
+| drawMaze | std::vector<std::vector<int>>& maze, SDL_Renderer* renderer  | void |przygotowuje "drzewo" i zamienią na macierz, następnie wykonuje przeładowaną funkcję | 
+| createMaze |int w, int h, , int sleepMs| void | tworzy okienko i generuje labirynt, parametr w - szerokośc labiryntu, h - szerokość labiryntu, sleepMs - czas uśpenia między kolejnymi krokami generacji w milisekundach |
 
 ## Korzystanie z programu
 
@@ -62,7 +63,7 @@ int main() {
     int height = 15;
 
     // generujemy labirynt
-    createMaze(width, height);
+    createMaze(width, height, 30);
 
     return 0;
 }
