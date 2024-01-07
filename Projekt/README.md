@@ -48,7 +48,7 @@ Zawiera informacje o współrzędnych komórki, informację o odwiedzeniu oraz f
 | setStartAndEndPoint | std::vector<std::vector<Cell>>& maze, SDL_Renderer* renderer| void| losowo ustawia punkt, z którego startujemy i punkt, do którego mamy dotrzeć|
 | drawMaze |std::vector<std::vector<int>>& matrixMaze, SDL_Renderer* renderer| void |wizualizuje labirynt przy użyciu biblioteki SDL2. Jest on rysowany jako siatka komórek, gdzie białe komórki reprezentują ścieżki, czarne to ściany, czerwone to punkt startowy, a zielone to punkt docelowy|
 | drawMaze | std::vector<std::vector<int>>& maze, SDL_Renderer* renderer  | void |przygotowuje "drzewo" i zamienią na macierz, następnie wykonuje przeładowaną funkcję | 
-| createMaze |int w, int h, , int sleepMs| void | tworzy okienko i generuje labirynt, parametr w - szerokośc labiryntu, h - szerokość labiryntu, sleepMs - czas uśpenia między kolejnymi krokami generacji w milisekundach |
+| createMaze |int w, int h, int sleepMs| void | tworzy okienko i generuje labirynt, parametr w - szerokośc labiryntu, h - szerokość labiryntu, sleepMs - czas uśpenia między kolejnymi krokami generacji w milisekundach |
 
 ## Korzystanie z programu
 
