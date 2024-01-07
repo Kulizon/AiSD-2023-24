@@ -10,7 +10,7 @@ void createMaze(int w, int h) {
     std::vector<std::vector<int>> matrixMaze;
     mazeToMatrix(maze, matrixMaze);
 
-    // stw�rz okienko w sdl pokazuj�ce labirynt
+    // stworz okienko w sdl pokazujace labirynt
     drawMaze(matrixMaze);
 }
 
@@ -90,36 +90,36 @@ void visitCell(Cell& cell, std::vector<std::vector<Cell>>& maze) {
     cell.visited = true;
     Cell* neighbour = hasNeighbours(cell, maze);
 
-    while (neighbour) {  // tworzymy �cie�k� mi�dzy kom�rk�, kt�r� odwiedzmay i jej s�siadami
+    while (neighbour) {  // tworzymy sciezke miedzy komorka, ktora odwiedzmay i jej sasiadami
         int xDif = neighbour->x - cell.x;
         int yDif = neighbour->y - cell.y;
 
-        // s�siad z prawej strony od kom�rki, kt�r� odwiedzamy 
+        // sasiad z prawej strony od komorki, ktora odwiedzamy 
         if (xDif == 1) {
             cell.wallR = false;
             neighbour->wallL = false;
         }
 
-        // s�siad z lewej strony od kom�rki, kt�r� odwiedzamy 
+        // sasiad z lewej strony od komorki, ktora odwiedzamy 
         if (xDif == -1) {
             cell.wallL = false;
             neighbour->wallR = false;
         }
 
-        // s�siad z do�y kom�rki, kt�r� odwiedzamy 
+        // sasiad z doly komorki, ktora odwiedzamy 
         if (yDif == 1) {
             cell.wallB = false;
             neighbour->wallT = false;
         }
 
-        // s�siad z g�ry kom�rki, kt�r� odwiedzamy 
+        // s�siad z gory komorki, ktora odwiedzamy 
         if (yDif == -1) {
             cell.wallT = false;
             neighbour->wallB = false;
         }
 
-        visitCell(*neighbour, maze); // odwiedzamy kom�rki tego s�siada i tworzymy �cie�k� od niego
-        neighbour = hasNeighbours(cell, maze); // je�eli s�siadnia kom�rka nie ma ju� s�siad�w, to bierzemy kolejnego s�siada kom�rki, kt�ra odiedzamy 
+        visitCell(*neighbour, maze); // odwiedzamy komorki tego sasiada i tworzymy sciezke od niego
+        neighbour = hasNeighbours(cell, maze); // jezeli sasiadnia komorka nie ma juz sasiadow, to bierzemy kolejnego sasiada komorki, ktora odiedzamy 
     }
 }
 
@@ -163,40 +163,18 @@ void mazeToMatrix(std::vector<std::vector<Cell>>& maze, std::vector<std::vector<
 }
 
 void setStartAndEndPoint(std::vector<std::vector<int>>& mat) {
-    std::vector<std::string> directions = { "t", "r", "b", "l" };
-    std::string startingWall = directions[std::rand() % 4];
-
-    if (startingWall == "t" || startingWall == "b") {
-        int dirA = (startingWall == "t") ? 1 : mat.size() - 2;
-        int pointA = std::rand() % mat[0].size();
-        while (mat[dirA][pointA] == 1) {
-            pointA = std::rand() % mat[0].size();
-        }
-
-        int dirB = (startingWall == "t") ? mat.size() - 2 : 1;
-        int pointB = std::rand() % mat[0].size();
-        while (mat[dirB][pointB] == 1) {
-            pointB = std::rand() % mat[0].size();
-        }
-
-        mat[dirA == 1 ? 0 : mat.size() - 1][pointA] = 2;
-        mat[dirB == 1 ? 0 : mat.size() - 1][pointB] = 3;
+    std::vector<std::array<int, 2>> directions = { {1, 0}, {1, (int)mat.size() - 1}, {(int)mat[0].size() - 1, 1}, {(int)mat[0].size() - 1, (int)mat.size() - 2}};
+    
+    int s1 = std::rand() % 4;
+    int s2 = std::rand() % 4;
+    while (s1 == s2) {
+        s2 = std::rand() % 4;
     }
+    
+    std::array<int, 2> startPoint = directions[s1];
+    std::array<int, 2> endPoint = directions[s2];
 
-    if (startingWall == "r" || startingWall == "l") {
-        int dirA = (startingWall == "l") ? 1 : mat[0].size() - 2;
-        int pointA = std::rand() % mat.size();
-        while (mat[pointA][dirA] == 1) {
-            pointA = std::rand() % mat.size();
-        }
+    mat[startPoint[0]][startPoint[1]] = 2;
+    mat[endPoint[0]][endPoint[1]] = 3;
 
-        int dirB = (startingWall == "l") ? mat[0].size() - 2 : 1;
-        int pointB = std::rand() % mat.size();
-        while (mat[pointB][dirB] == 1) {
-            pointB = std::rand() % mat.size();
-        }
-
-        mat[pointA][dirA == 1 ? 0 : mat[0].size() - 1] = 2;
-        mat[pointB][dirB == 1 ? 0 : mat[0].size() - 1] = 3;
-    }
 }
